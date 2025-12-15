@@ -100,25 +100,30 @@ navLinks.forEach(link => {
 
 // ---- subscription control -----
 
-  const singleRadio = document.getElementById("singleRadio");
-  const doubleRadio = document.getElementById("doubleRadio");
+const singleRadio = document.getElementById("singleRadio");
+const doubleRadio = document.getElementById("doubleRadio");
 
-  const singlePlan = document.getElementById("singlePlan");
-  const doublePlan = document.getElementById("doublePlan");
+const singlePlan = document.getElementById("singlePlan");
+const doublePlan = document.getElementById("doublePlan");
 
-  singleRadio.addEventListener("change", () => {
-    if (singleRadio.checked) {
-      singlePlan.classList.add("active");
-      doublePlan.classList.remove("active");
-    }
-  });
+singleRadio.addEventListener("change", () => {
+  if (!singleRadio.checked) return;
 
-  doubleRadio.addEventListener("change", () => {
-    if (doubleRadio.checked) {
-      doublePlan.classList.add("active");
-      singlePlan.classList.remove("active");
-    }
-  });
+  singlePlan.classList.add("active");
+  doublePlan.classList.remove("active");
+
+  delete cartBtn.dataset.link;
+});
+
+doubleRadio.addEventListener("change", () => {
+  if (!doubleRadio.checked) return;
+
+  doublePlan.classList.add("active");
+  singlePlan.classList.remove("active");
+
+  delete cartBtn.dataset.link;
+});
+
 
   function updateHighlight() {
   const table = document.querySelector(".comparison-table");
@@ -143,6 +148,8 @@ window.addEventListener("resize", updateHighlight);
 const cartBtn = document.querySelector(".cart-text");
 
 function updateCartLink() {
+  delete cartBtn.dataset.link; 
+
   const plan = document.querySelector('input[name="plan"]:checked')?.id;
 
   let fragrance = null;
@@ -157,6 +164,7 @@ function updateCartLink() {
     const f1 = document.querySelector(
       'input[name="double-fragrance-1"]:checked'
     )?.value;
+
     const f2 = document.querySelector(
       'input[name="double-fragrance-2"]:checked'
     )?.value;
@@ -177,13 +185,13 @@ document.querySelectorAll('input[type="radio"]').forEach(radio => {
 });
 
 cartBtn.addEventListener("click", () => {
-  if (cartBtn.dataset.link) {
-    window.location.href = cartBtn.dataset.link;
-  } else {
+  if (!cartBtn.dataset.link) {
     alert("Please select plan and fragrance");
+    return;
   }
-});
 
+  window.location.href = cartBtn.dataset.link;
+});
 
 // ----- Count Changing ---
 
