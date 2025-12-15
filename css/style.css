@@ -228,7 +228,7 @@ header {
 .hero {
   width: 100%;
   min-height: 794px;
-  background-image: url("/assets/header_image.png");
+  background-image: url("../assets/header_image.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
