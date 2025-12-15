@@ -2042,4 +2042,6 @@ input[type="radio"] {
     font-size: 12px;
     text-align: center;
   }
+  .newsletter-note a{
+      font-size:12px;
 }
