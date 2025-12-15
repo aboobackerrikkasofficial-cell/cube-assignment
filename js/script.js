@@ -45,7 +45,7 @@ navLinks.forEach(link => {
 
   const mainImage = document.getElementById("mainImage");
   const dots = document.querySelectorAll(".dot");
-  const thumbs = document.querySelectorAll(".thumbnail-block .thumbnails:first-child .thumb");
+  const thumbs = document.querySelectorAll(".thumb");
   const prevBtn = document.querySelector(".left-slider");
   const nextBtn = document.querySelector(".right-slider");
 
