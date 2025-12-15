@@ -35,22 +35,25 @@ navLinks.forEach(link => {
 // ----- Gallery Data ----
 
   const images = [
-    "/assets/pexels-pixabay-264870 1 (2).png",
-    "/assets/pexels-pixabay-264950 1 (1).png",
-    "/assets/pexels-rethaferguson-3059609 2 (2).png",
-    "/assets/pexels-valeriya-1961782 1 (1).png"
+    "./assets/pexels-pixabay-264870 1 (2).png",
+    "./assets/pexels-pixabay-264950 1 (1).png",
+    "./assets/pexels-rethaferguson-3059609 2 (2).png",
+    "./assets/pexels-valeriya-1961782 1 (1).png"
   ];
 
   let currentIndex = 0;
 
   const mainImage = document.getElementById("mainImage");
   const dots = document.querySelectorAll(".dot");
-  const thumbs = document.querySelectorAll(".thumb");
+  const thumbs = document.querySelectorAll(".thumbnail-block .thumbnails:first-child .thumb");
   const prevBtn = document.querySelector(".left-slider");
   const nextBtn = document.querySelector(".right-slider");
 
   function updateGallery(index) {
-  if (index === currentIndex) return;
+  if (index === currentIndex) {
+  mainImage.classList.remove("fade-out");
+  return;
+}
 
   mainImage.classList.add("fade-out");
 
